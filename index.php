@@ -56,60 +56,57 @@
     <h1>Results</h1>
   </div>
   <div>
-    <table>
-
-    </table>
-<?php
-/* Attempt MySQL server connection. Assuming you are running MySQL
-server with default setting (user 'root' with no password) */
-$link = mysqli_connect("localhost", "root", "root", "projekt_04");
- 
-// Check connection
-if($link === false){
-    die("ERROR: Could not connect. " . mysqli_connect_error());
-}
- 
-// Attempt select query execution
-$sql = "SELECT * FROM result";
-if($result = mysqli_query($link, $sql)){
-    if(mysqli_num_rows($result) > 0){
-        echo "<table>";
-            echo "<tr>";
-                echo "<th>id</th>";
-                echo "<th>Station ID</th>";
-                echo "<th>Latitude</th>";
-                echo "<th>Longitude</th>";
-                echo "<th>Air Polution</th>";
-                echo "<th>Noise Polution</th>";
-                echo "<th>Timestamp</th>";
-            echo "</tr>";
-        while($row = mysqli_fetch_array($result)){
-            echo "<tr>";
-                echo "<td>" . $row['id'] . "</td>";
-                echo "<td>" . $row['station_id'] . "</td>";
-                echo "<td>" . $row['lat'] . "</td>";
-                echo "<td>" . $row['lng'] . "</td>";
-                echo "<td>" . $row['air_polution'] . "</td>";
-                echo "<td>" . $row['noise_polution'] . "</td>";
-                echo "<td>" . $row['timestamp'] . "</td>";
-            echo "</tr>";
-        }
-        echo "</table>";
-        // Free result set
-        mysqli_free_result($result);
-    } else{
-        echo "No records matching your query were found.";
+    <?php
+    /* Attempt MySQL server connection. Assuming you are running MySQL
+    server with default setting (user 'root' with no password) */
+    $link = mysqli_connect("localhost", "root", "root", "projekt_04");
+     
+    // Check connection
+    if($link === false){
+        die("ERROR: Could not connect. " . mysqli_connect_error());
     }
-} else{
-    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-}
- 
-// Close connection
-mysqli_close($link);
-?>
+     
+    // Attempt select query execution
+    $sql = "SELECT * FROM result";
+    if($result = mysqli_query($link, $sql)){
+        if(mysqli_num_rows($result) > 0){
+            echo "<table>";
+                echo "<tr>";
+                    echo "<th>id</th>";
+                    echo "<th>Station ID</th>";
+                    echo "<th>Latitude</th>";
+                    echo "<th>Longitude</th>";
+                    echo "<th>Air Polution</th>";
+                    echo "<th>Noise Polution</th>";
+                    echo "<th>Timestamp</th>";
+                echo "</tr>";
+            while($row = mysqli_fetch_array($result)){
+                echo "<tr>";
+                    echo "<td>" . $row['id'] . "</td>";
+                    echo "<td>" . $row['station_id'] . "</td>";
+                    echo "<td>" . $row['lat'] . "</td>";
+                    echo "<td>" . $row['lng'] . "</td>";
+                    echo "<td>" . $row['air_polution'] . "</td>";
+                    echo "<td>" . $row['noise_polution'] . "</td>";
+                    echo "<td>" . $row['timestamp'] . "</td>";
+                echo "</tr>";
+            }
+            echo "</table>";
+            // Free result set
+            mysqli_free_result($result);
+        } else{
+            echo "No records matching your query were found.";
+        }
+    } else{
+        echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+    }
+     
+    // Close connection
+    mysqli_close($link);
+    ?>
 
   </div>
-  <div>
+<!--  <div>
       <div id='map'></div>
   </div>
 
@@ -122,6 +119,6 @@ var map = new mapboxgl.Map({
     zoom: 5 // starting zoom
 });
 </script>
-
+-->
 </body>
 </html>
