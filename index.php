@@ -57,43 +57,12 @@
   </div>
   <div>
     <table>
-      <tr>
-        <th>
-          ID
-        </th>
-        <th>
-          Station ID
-        </th>
-        <th>
-          Latitude
-        </th>
-        <th>
-          Longitude
-        </th>
-        <th>
-          Luftverschmutzung
-        </th>
-        <th>
-          Geräuschpegel
-        </th>
-        <th>
-          Timestamp
-        </th>
-      <tr>
-        <td>asdkasd</td>
-        <td>asdkasd</td>
-        <td>asdkasd</td>
-        <td>asdkasd</td>
-        <td>asdkasd</td>
-        <td>asdkasd</td>
-        <td>asdkasd</td>
-      </tr>
 
     </table>
 <?php
 /* Attempt MySQL server connection. Assuming you are running MySQL
 server with default setting (user 'root' with no password) */
-$link = mysqli_connect("localhost", "root", "", "demo");
+$link = mysqli_connect("localhost", "root", "root", "projekt_04");
  
 // Check connection
 if($link === false){
@@ -101,7 +70,7 @@ if($link === false){
 }
  
 // Attempt select query execution
-$sql = "SELECT * FROM persons";
+$sql = "SELECT * FROM result";
 if($result = mysqli_query($link, $sql)){
     if(mysqli_num_rows($result) > 0){
         echo "<table>";
